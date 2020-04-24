@@ -25,6 +25,7 @@ export default class Scene {
     setup() {
         // Init Physics world
         this.world = new C.World()
+        console.log(this.world)
         this.world.gravity.set(0, -50, 0)
 
         // Init Three components
