@@ -3,10 +3,11 @@ import C from 'cannon'
 import OrbitControls from 'three-orbitcontrols'
 
 import MenuSticky from './MenuSticky'
+import Backdrop from './Backdrop'
 
 import CannonDebugRenderer from './utils/CannonDebugRenderer'
 
-const distance = 15
+const distance = 16
 
 export default class Scene {
 
@@ -25,7 +26,6 @@ export default class Scene {
     setup() {
         // Init Physics world
         this.world = new C.World()
-        console.log(this.world)
         this.world.gravity.set(0, -50, 0)
 
         // Init Three components
@@ -44,12 +44,9 @@ export default class Scene {
 
     /* Handlers
     --------------------------------------------------------- */
-
     onResize() {
         const { W, H } = APP.Layout
-
         this.camera.aspect = W / H
-
         this.camera.top    = distance
         this.camera.right  = distance * this.camera.aspect
         this.camera.bottom = -distance
@@ -87,6 +84,7 @@ export default class Scene {
     }
 
     setRender() {
+        console.log('scene', this)
         this.renderer = new THREE.WebGLRenderer({
             antialias: true,
             canvas: this.$stage,
@@ -101,6 +99,10 @@ export default class Scene {
 
     addObjects() {
         this.menu = new MenuSticky(this.scene, this.world, this.camera)
+        this.backdrop = new Backdrop(this.scene, this.camera, this.world)
+        console.log(this.scene)
+        console.log(this.backdrop)
+        console.log(this.menu)
     }
 
 
@@ -125,6 +127,7 @@ export default class Scene {
         if (this.dbr) this.dbr.update()
 
         this.menu.update()
+
 
         this.world.step(1 / 60)
     }

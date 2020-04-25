@@ -5,7 +5,7 @@ import SceneSticky from './SceneSticky'
 export default class Stage {
 
     constructor() {
-
+        console.log('stage', this)
         this.setup()
 
         this.onResize()
@@ -21,7 +21,6 @@ export default class Stage {
         if (document.body.classList.contains('demo-2')) {
             this.mainScene = new SceneSticky()
         }
-        // console.log(this.mainScene)
     }
 
 
@@ -30,7 +29,6 @@ export default class Stage {
 
     onResize() {
         const scl = APP.Layout.isMobile ? 0.7 : 1
-
         this.mainScene.scene.scale.set(scl, scl, scl)
     }
 
