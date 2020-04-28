@@ -84,7 +84,6 @@ export default class Scene {
     }
 
     setRender() {
-        console.log('scene', this)
         this.renderer = new THREE.WebGLRenderer({
             antialias: true,
             canvas: this.$stage,
@@ -99,10 +98,7 @@ export default class Scene {
 
     addObjects() {
         this.menu = new MenuSticky(this.scene, this.world, this.camera)
-        this.backdrop = new Backdrop(this.scene, this.camera, this.world)
-        console.log(this.scene)
-        console.log(this.backdrop)
-        console.log(this.menu)
+        this.backdrop = new Backdrop(this.scene)
     }
 
 

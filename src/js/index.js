@@ -4,7 +4,6 @@ import Layout from './Layout'
 
 const APP = window.APP || {}
 
-
 /*-----------------------------------------------------------------------------------*/
 /*  01. INIT
 /*-----------------------------------------------------------------------------------*/
@@ -14,7 +13,6 @@ const initApp = () => {
 
     APP.Layout = new Layout()
     APP.Stage = new Stage()
-    // console.log(APP)
 }
 
 if (document.readyState === 'complete' || (document.readyState !== 'loading' && !document.documentElement.doScroll)) {

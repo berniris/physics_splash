@@ -1,11 +1,11 @@
 // import SceneDrop from './SceneDrop'
 import SceneSticky from './SceneSticky'
+import Backdrop from './Backdrop'
 // import SceneHinge from './SceneHinge'
 
 export default class Stage {
 
     constructor() {
-        console.log('stage', this)
         this.setup()
 
         this.onResize()
@@ -20,6 +20,7 @@ export default class Stage {
     setup() {
         if (document.body.classList.contains('demo-2')) {
             this.mainScene = new SceneSticky()
+            // this.backgroundScene = new Backdrop()
         }
     }
 

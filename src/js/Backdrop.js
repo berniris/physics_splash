@@ -2,14 +2,16 @@ import * as THREE from 'three'
 import C from 'cannon'
 
 
+const distance = 16
 
 export default class Backdrop {
 
-    constructor(scene, world, camera) {
+    constructor(scene, camera) {
         this.scene = scene
         this.camera = camera
         this.setup()
         this.bindEvents()
+        console.log(this.scene)
     }
 
 
@@ -19,21 +21,16 @@ export default class Backdrop {
 
 
     setup() {
-        this.camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000)
-        this.scene.background = new THREE.Color(0xf0f0f0)
-
-        // this.camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000)
-        // this.scene = new THREE.Scene()
-
+        console.log(this.scene)
         const light = new THREE.DirectionalLight(0xffffff, 1)
         light.position.set(1, 1, 1).normalize()
-        this.scene.add(light)
+        // this.scene.add(light)
 
         const geometry = new THREE.BoxBufferGeometry(20, 20, 20)
 
         for (let i = 0; i < 2000; i++) {
 
-            const object = new THREE.Mesh(geometry, new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff }));
+            const object = new THREE.Mesh(geometry, new THREE.MeshLambertMaterial({ color: Math.random() * 0xffffff, transparent: true, opacity: 0.75 }))
 
             object.position.x = Math.random() * 800 - 400;
             object.position.y = Math.random() * 800 - 400;
@@ -43,16 +40,18 @@ export default class Backdrop {
             object.rotation.y = Math.random() * 2 * Math.PI;
             object.rotation.z = Math.random() * 2 * Math.PI;
 
-            object.scale.x = Math.random() + 0.5;
-            object.scale.y = Math.random() + 0.5;
-            object.scale.z = Math.random() + 0.5;
+            object.scale.x = Math.random() + 0.5
+            object.scale.y = Math.random() + 0.5
+            object.scale.z = Math.random() + 0.5
 
-            this.scene.add(object);
+            this.scene.add(object)
         }
     }
 
     /* Handlers
     --------------------------------------------------------- */
+
+
     onResize() {
         const { W, H } = APP.Layout
         this.camera.aspect = W / H
