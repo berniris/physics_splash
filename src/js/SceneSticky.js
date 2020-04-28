@@ -45,10 +45,10 @@ export default class Scene {
     /* Handlers
     --------------------------------------------------------- */
     onResize() {
-        const { W, H } = APP.Layout
+        const { W, H } = APP.Layoutgit 
         this.camera.aspect = W / H
         this.camera.top    = distance
-        this.camera.right  = distance * this.camera.aspect
+        this.camera.right  istance * this.camera.aspect
         this.camera.bottom = -distance
         this.camera.left   = -distance * this.camera.aspect
 
@@ -59,7 +59,7 @@ export default class Scene {
 
     /* Actions
     --------------------------------------------------------- */
-
+sdfdf
     setCamera() {
         const { W, H } = APP.Layout
         const aspect = W / H
