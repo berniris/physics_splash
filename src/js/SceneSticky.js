@@ -59,7 +59,7 @@ export default class Scene {
 
     /* Actions
     --------------------------------------------------------- */
-sdfdf
+
     setCamera() {
         const { W, H } = APP.Layout
         const aspect = W / H
